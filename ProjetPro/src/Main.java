@@ -41,23 +41,27 @@ public class Main {
                     String marque;
                     boolean estToxique;
                     int choixToxique;
+                    double temperature;
 
                     //Exception à géré
 
-                    System.out.println("Nom du produit :\n");
-                    nom = sc.nextLine();
+                    System.out.println("Nom du produit :");
+                    nom = sc.next();
 
-                    System.out.println("Prix du produit :\n");
-                    prix= sc.nextInt();
+                    System.out.println("Prix du produit :");
+                    prix= sc.nextDouble();
+                    sc.nextLine();
 
-                    System.out.println("Marque du produit :\n");
-                    marque = sc.nextLine();
+                    System.out.println("Marque du produit :");
+                    marque = sc.next();
+
 
                     // vérification pour produit toxique en userfriendly
                     do {
-                        System.out.println("Taper 1 si le produit est toxique et 2 si non");
+                        System.out.println("Tapper 1 si le produit est toxique et 2 sinon");
                         choixToxique=sc.nextInt();
-                    }while (choixToxique <1 || choixToxique >2);
+                        sc.nextLine();
+                    }while (choixToxique !=1 || choixToxique !=2);
 
                     //attribution du choix à toxique
                     estToxique = choixToxique == 1;
@@ -65,11 +69,14 @@ public class Main {
                     // création produit réfrigéré
                     if (choixFroid ==1){
 
+                        System.out.println("Température du produit");
+                        temperature = sc.nextDouble();
+                        sc.nextLine();
                         //crée le produit
-                        Produit produitCreer = new Réfrigéré(nom,prix,marque,estToxique);
-                        listeProduit.add(produitCreer);
+                        //Produit produitCreer = new Refrigere(nom,prix,marque,estToxique,temperature);
+                        //listeProduit.add(produitCreer);
 
-                    //création produit non réfrigéré
+                        //création produit non réfrigéré
                     }else {
                         /*
                         //crée le produit
