@@ -55,9 +55,9 @@ public class Main {
 
                     // vérification pour produit toxique en userfriendly
                     do {
-                        System.out.println("Tapper 1 si le produit est toxique et 2 sinon");
+                        System.out.println("Taper 1 si le produit est toxique et 2 si non");
                         choixToxique=sc.nextInt();
-                    }while (choixToxique !=1 || choixToxique !=2);
+                    }while (choixToxique <1 || choixToxique >2);
 
                     //attribution du choix à toxique
                     estToxique = choixToxique == 1;

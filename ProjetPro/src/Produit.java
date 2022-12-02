@@ -16,7 +16,7 @@ abstract class Produit {
         return nom;
     }
 
-    public int getPrix() {
+    public double getPrix() {
         return prix;
     }
 
