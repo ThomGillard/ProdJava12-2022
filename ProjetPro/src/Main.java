@@ -107,12 +107,39 @@ public class Main {
                     message = "\n\nStock créé avec succès";
                     break;
                     case 3:
-                        if (listeProduit.get(0 )!= null){
+
+                        /*
+                        if (listeProduit.get(0)!= null){
+
+                            Produit prod = listeProduit.get(0);
+                            if (listeStock.get())
+                            //Si est réfrigéré
+                            if (prod instanceof Réfrigéré){
+                                //Si est toxique
+                                if (prod.isEstToxique()){
+                                    listeStock.size();
+
+                                    //Si n'est pas toxique
+                                }else {
+
+                                }
+                            //Si non réfrigéré
+                            }else{
+                                //Si est toxique
+                                if (prod.isEstToxique()){
+
+                                //Si n'est pas toxique
+                                }else {
+
+                                }
+                            }
+
                             listeStock.get(0).ajouterProduit(listeProduit.get(0));
                             listeProduit.remove(0);
-                        }
-                        
 
+                        }
+
+                           */
                         break;
             }
             System.out.println(message);
