@@ -106,6 +106,14 @@ public class Main {
                     listeStock.add(stock);
                     message = "\n\nStock créé avec succès";
                     break;
+                    case 3:
+                        if (listeProduit.get(0 )!= null){
+                            listeStock.get(0).ajouterProduit(listeProduit.get(0));
+                            listeProduit.remove(0);
+                        }
+                        
+
+                        break;
             }
             System.out.println(message);
         }while (choixMenu!=6);
