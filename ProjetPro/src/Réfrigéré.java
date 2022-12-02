@@ -2,6 +2,9 @@ class Réfrigéré extends Produit{
 
 
     double temperature = 0;
+
+    //Contructeur:
+
     public Réfrigéré(String nom, double prix, String marque, boolean estToxique,double temperature) {
         super(nom, prix, marque, estToxique);
         this.temperature = temperature;

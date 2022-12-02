@@ -3,6 +3,7 @@ abstract class Produit {
     private double prix;
     private final String marque;
 
+    //Constructeur:
     public Produit(String nom, double prix, String marque, boolean estToxique) {
         this.nom = nom;
         this.prix = prix;
