@@ -11,6 +11,10 @@ public class Stock  {
         this.tailleMax = tailleMax;
     }
 
+    public Stock(Adresse adresse, int tailleMax) {
+        this.adresse = adresse;
+        this.tailleMax = tailleMax;
+    }
 
     int[] tabQuantite = new int[tailleMax];
     Produit[] tabProduit = new Produit [tailleMax];
