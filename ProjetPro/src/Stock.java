@@ -12,6 +12,8 @@ public class Stock  {
     }
 
 
-    int[] tabProduit = new int[];
+    int[] tabQuantite = new int[tailleMax];
+    Produit[] tabProduit = new Produit [tailleMax];
+
 
 }
