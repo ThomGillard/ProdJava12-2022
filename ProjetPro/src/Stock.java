@@ -1,6 +1,7 @@
 public class Stock  {
 
     private Adresse adresse;
+    private int tailleMax;
 
     public int getTailleMax() {
         return tailleMax;
@@ -10,6 +11,6 @@ public class Stock  {
         this.tailleMax = tailleMax;
     }
 
-    private int tailleMax;
+
 
 }
