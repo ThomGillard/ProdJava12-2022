@@ -17,16 +17,18 @@ public class Main {
                 "5. Supprimer un produit d'un stock\n" +
                 "6. Quitter";
         Scanner sc= new Scanner(System.in);
-        System.out.println(affichageMenu);
-        System.out.println("Que voulez vous faire ?");
+
         do {
-            do {
+            String message="";
+            System.out.println(affichageMenu);
+            System.out.println("Que voulez vous faire ?");
+            choixMenu=sc.nextInt();
+            while(choixMenu < 0 || choixMenu > 6){
+
+                System.out.println(affichageMenu);
+                System.out.println("Veuillez entrer un choix entre 1 et 6");
                 choixMenu=sc.nextInt();
-                if (choixMenu < 0 || choixMenu > 6){
-                    System.out.println(affichageMenu);
-                    System.out.println("Veuillez entrer un choix entre 1 et 6");
-                }
-            }while (choixMenu < 0 || choixMenu > 6);
+            }
             // Menu
             switch (choixMenu){
                 //Création produit
@@ -41,7 +43,6 @@ public class Main {
                     String marque;
                     boolean estToxique;
                     int choixToxique;
-                    double temperature;
 
                     //Exception à géré
 
@@ -51,44 +52,62 @@ public class Main {
                     System.out.println("Prix du produit :");
                     prix= sc.nextDouble();
                     sc.nextLine();
-
                     System.out.println("Marque du produit :");
                     marque = sc.next();
 
-
                     // vérification pour produit toxique en userfriendly
                     do {
-                        System.out.println("Tapper 1 si le produit est toxique et 2 sinon");
+                        System.out.println("Taper 1 si le produit est toxique et 2 si non");
                         choixToxique=sc.nextInt();
-                        sc.nextLine();
-                    }while (choixToxique !=1 || choixToxique !=2);
+                    }while (choixToxique <1 || choixToxique >2);
 
                     //attribution du choix à toxique
                     estToxique = choixToxique == 1;
 
                     // création produit réfrigéré
                     if (choixFroid ==1){
-
-                        System.out.println("Température du produit");
-                        temperature = sc.nextDouble();
-                        sc.nextLine();
+                        System.out.println("Température de conservation du produit :");
+                        double temperature = sc.nextDouble();
                         //crée le produit
-                        //Produit produitCreer = new Refrigere(nom,prix,marque,estToxique,temperature);
-                        //listeProduit.add(produitCreer);
-
-                        //création produit non réfrigéré
-                    }else {
-                        /*
-                        //crée le produit
-                        Produit produitCreer = new non_réfrigéré();
+                        Produit produitCreer = new Réfrigéré(nom,prix,marque,estToxique,temperature);
                         listeProduit.add(produitCreer);
-                        */
+                    //création produit non réfrigéré
+                    }else {
+
+                        //crée le produit
+                        Produit produitCreer = new NonRéfrigéré(nom,prix,marque,estToxique);
+                        listeProduit.add(produitCreer);
+
                     }
+                    message = "\n\nProduit créé avec succès";
                     break;
 
                 case 2:
+                    System.out.println("Rue : ");
+                    String rue = sc.next();
 
+                    System.out.println("Numéro : ");
+                    int numéro = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.println("Nom de la ville/du village : ");
+                    String nomVille = sc.next();
+
+                    System.out.println("Code postal :");
+                    int codePostal = sc.nextInt();
+                    sc.nextLine();
+
+                    Adresse adresse = new Adresse(rue,numéro,nomVille,codePostal);
+
+                    System.out.println("Taille max du stock :");
+                    int tailleMax = sc.nextInt();
+
+                    Stock stock = new Stock(adresse,tailleMax);
+                    listeStock.add(stock);
+                    message = "\n\nStock créé avec succès";
+                    break;
             }
+            System.out.println(message);
         }while (choixMenu!=6);
 
     }
