@@ -1,9 +1,9 @@
 abstract class Produit {
     private final String nom;
-    private int prix;
+    private double prix;
     private final String marque;
 
-    public Produit(String nom, int prix, String marque, boolean estToxique) {
+    public Produit(String nom, double prix, String marque, boolean estToxique) {
         this.nom = nom;
         this.prix = prix;
         this.marque = marque;
