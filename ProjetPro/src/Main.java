@@ -38,7 +38,7 @@ public class Main {
 //            break;
 //            case 4 : modifQuantStock;
 //            break;
-//            case 5 : suppProduit;
+//            case 5 : suppProduit; Mathis
 //            break;
                 }
             } else {
