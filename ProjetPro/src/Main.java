@@ -1,8 +1,23 @@
+import produit.CreerProduitException;
+import produit.Produit;
+import produit.ProduitGestion;
+import stock.Stock;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
+    private final static String MENU = "1. Créer un produit\n" +
+            "2. Créer un stock\n" +
+            "3. Ajouter un produit à un stock\n" +
+            "4. Modifier la quantité de ce produit dans le stock\n" +
+            "5. Supprimer un produit d'un stock\n" +
+            "6. Quitter";
+    private final static Scanner sc= new Scanner(System.in);
+    private final static ProduitGestion produitGestion = new ProduitGestion();
+
     public static void main(String[] args) {
 
         List<Produit> listeProduit = new ArrayList<Produit>();
@@ -10,140 +25,91 @@ public class Main {
         int choixMenu;
         int choixFroid;
 
-        String affichageMenu= "1. Créer un produit\n" +
-                "2. Créer un stock\n" +
-                "3. Ajouter un produit à un stock\n" +
-                "4. Modifier la quantité de ce produit dans le stock\n" +
-                "5. Supprimer un produit d'un stock\n" +
-                "6. Quitter";
-        Scanner sc= new Scanner(System.in);
+
 
         do {
-            String message="";
-            System.out.println(affichageMenu);
-            System.out.println("Que voulez vous faire ?");
-            choixMenu=sc.nextInt();
-            while(choixMenu < 0 || choixMenu > 6){
+            System.out.println(MENU);
+            System.out.println("Que voulez-vous faire ?");
 
-                System.out.println(affichageMenu);
-                System.out.println("Veuillez entrer un choix entre 1 et 6");
-                choixMenu=sc.nextInt();
-            }
-            // Menu
-            switch (choixMenu){
-                //Création produit
-                case 1:
-                    do {
-                        System.out.println("Le produit doit être au réfrigérateur ?(1 pour 'oui' et 2 pour 'non')");
-                        choixFroid = sc.nextInt();
-                    }while(choixFroid < 1 || choixFroid >2);
-
-                    String nom;
-                    double prix;
-                    String marque;
-                    boolean estToxique;
-                    int choixToxique;
-
-                    //Exception à géré
-
-                    System.out.println("Nom du produit :");
-                    nom = sc.next();
-
-                    System.out.println("Prix du produit :");
-                    prix= sc.nextDouble();
-                    sc.nextLine();
-                    System.out.println("Marque du produit :");
-                    marque = sc.next();
-
-                    // vérification pour produit toxique en userfriendly
-                    do {
-                        System.out.println("Taper 1 si le produit est toxique et 2 si non");
-                        choixToxique=sc.nextInt();
-                    }while (choixToxique <1 || choixToxique >2);
-
-                    //attribution du choix à toxique
-                    estToxique = choixToxique == 1;
-
-                    // création produit réfrigéré
-                    if (choixFroid ==1){
-                        System.out.println("Température de conservation du produit :");
-                        double temperature = sc.nextDouble();
-                        //crée le produit
-                        Produit produitCreer = new Réfrigéré(nom,prix,marque,estToxique,temperature);
-                        listeProduit.add(produitCreer);
-                    //création produit non réfrigéré
-                    }else {
-
-                        //crée le produit
-                        Produit produitCreer = new NonRéfrigéré(nom,prix,marque,estToxique);
-                        listeProduit.add(produitCreer);
-
-                    }
-                    message = "\n\nProduit créé avec succès";
-                    break;
-
-                case 2:
-                    System.out.println("Rue : ");
-                    String rue = sc.next();
-
-                    System.out.println("Numéro : ");
-                    int numéro = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.println("Nom de la ville/du village : ");
-                    String nomVille = sc.next();
-
-                    System.out.println("Code postal :");
-                    int codePostal = sc.nextInt();
-                    sc.nextLine();
-
-                    Adresse adresse = new Adresse(rue,numéro,nomVille,codePostal);
-
-                    System.out.println("Taille max du stock :");
-                    int tailleMax = sc.nextInt();
-
-                    Stock stock = new Stock(adresse,tailleMax);
-                    listeStock.add(stock);
-                    message = "\n\nStock créé avec succès";
-                    break;
-                    case 3:
-
-                        /*
-                        if (listeProduit.get(0)!= null){
-
-                            Produit prod = listeProduit.get(0);
-                            if (listeStock.get())
-                            //Si est réfrigéré
-                            if (prod instanceof Réfrigéré){
-                                //Si est toxique
-                                if (prod.isEstToxique()){
-                                    listeStock.size();
-
-                                    //Si n'est pas toxique
-                                }else {
-
-                                }
-                            //Si non réfrigéré
-                            }else{
-                                //Si est toxique
-                                if (prod.isEstToxique()){
-
-                                //Si n'est pas toxique
-                                }else {
-
-                                }
-                            }
-
-                            listeStock.get(0).ajouterProduit(listeProduit.get(0));
-                            listeProduit.remove(0);
-
-                        }
-
-                           */
+            choixMenu = lireNombre();
+            if (choixMenu >= 1 && choixMenu <= 5) {
+                switch (choixMenu){
+                    case 1 : afficherNouveauProduit();
                         break;
+//            case 2: nouveauStock;
+//            break,
+//            case 3 : produitEnStock;
+//            break;
+//            case 4 : modifQuantStock;
+//            break;
+//            case 5 : suppProduit;
+//            break;
+                }
+            } else {
+                afficherMessageErreurMenu();
             }
-            System.out.println(message);
+
         }while (choixMenu!=6);
 
+        //Menu
+
+
+
+    }
+
+    private static void afficherMessageErreurMenu() {
+        System.out.println("Veuillez entrer un choix entre 1 et 6");
+    }
+
+    private static void afficherNouveauProduit(){
+        System.out.println("Nom du produit");
+        String nomProduit = null;
+
+        try {
+            nomProduit = lireString();
+        } catch (Exception e) {
+            System.out.println("Le nom ne peut être vide");
+            return;
+        }
+//        double prix = 31.10;
+//        String marque = "Ferrero";
+//        boolean toxique = true;
+//        boolean froid = true;
+
+        // Produit normal   --> nom, prix, marque, toxique
+        // Produit refrigéré --> nom prix marque toxique, temperature
+
+
+
+        System.out.println("Quel est la température de conservation");
+        int temperature = lireNombre();
+        if (temperature <= 0 || temperature >= 30) {
+            System.out.println("La température doit être comprise entre 0 et 30°");
+            return;
+        }
+        try {
+            produitGestion.creerProduit(nomProduit, prix, marque, toxique, temperature);
+        } catch (CreerProduitException e) {
+            System.out.println("Erreur dans l'encodage. Le message d'erreur est le suivant:");
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("Nb produits " + produitGestion.getNbProduits());
+    }
+
+    private static Integer lireNombre() {
+        try {
+            return Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+           // e.printStackTrace();
+            return -1;
+        }
+    }
+    private static String lireString() throws Exception {
+        String input = sc.nextLine();
+        if (input == null || input.length() == 0) {
+            throw new Exception();
+        }
+        return input;
     }
 }
