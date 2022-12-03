@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProduitGestion {
-    private final static Scanner sc= new Scanner(System.in);
+
 
     private final ArrayList<Produit> produits = new ArrayList();
     private static final int MAX_TEMPERATURE_FRIGO = 8;
