@@ -1,6 +1,4 @@
-import produit.CreerProduitException;
-import produit.Produit;
-import produit.ProduitGestion;
+import produit.*;
 import stock.Stock;
 
 import java.util.ArrayList;
@@ -9,7 +7,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    private final static String MENU = "1. Créer un produit\n" +
+    private final static String MENU =
+            "1. Créer un produit\n" +
             "2. Créer un stock\n" +
             "3. Ajouter un produit à un stock\n" +
             "4. Modifier la quantité de ce produit dans le stock\n" +
@@ -20,10 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Produit> listeProduit = new ArrayList<Produit>();
-        List<Stock> listeStock = new ArrayList<Stock>();
         int choixMenu;
-        int choixFroid;
 
 
 
@@ -54,7 +50,6 @@ public class Main {
         //Menu
 
 
-
     }
 
     private static void afficherMessageErreurMenu() {
@@ -62,33 +57,34 @@ public class Main {
     }
 
     private static void afficherNouveauProduit(){
-        System.out.println("Nom du produit");
-        String nomProduit = null;
+
+        System.out.println("Nom du produit :");
+            String nom = sc.next();
+
+        System.out.println("Prix du produit :");
+        double prix= sc.nextDouble();
+        sc.nextLine();
+
+        System.out.println("Marque du produit :");
+        String marque = sc.next();
+
+        // vérification pour produit toxique en userfriendly
+            int choixToxique;
+            do {
+            System.out.println("Taper 1 si le produit est toxique et 2 si non");
+            choixToxique=sc.nextInt();
+        }while (choixToxique <1 || choixToxique >2);
+            boolean estToxique = choixToxique == 1;
+        // température ;
+            double temperature;
+                System.out.println("Quelle est la température de conservation du produits ? Comprise entre 0° et 30°");
+                temperature= sc.nextDouble();
+
+
+        System.out.println("Produit créé avec succès");
 
         try {
-            nomProduit = lireString();
-        } catch (Exception e) {
-            System.out.println("Le nom ne peut être vide");
-            return;
-        }
-//        double prix = 31.10;
-//        String marque = "Ferrero";
-//        boolean toxique = true;
-//        boolean froid = true;
-
-        // Produit normal   --> nom, prix, marque, toxique
-        // Produit refrigéré --> nom prix marque toxique, temperature
-
-
-
-        System.out.println("Quel est la température de conservation");
-        int temperature = lireNombre();
-        if (temperature <= 0 || temperature >= 30) {
-            System.out.println("La température doit être comprise entre 0 et 30°");
-            return;
-        }
-        try {
-            produitGestion.creerProduit(nomProduit,prix, marque, toxique, temperature);
+            produitGestion.creerProduit(nom,prix, marque, estToxique, temperature);
         } catch (CreerProduitException e) {
             System.out.println("Erreur dans l'encodage. Le message d'erreur est le suivant:");
             System.out.println(e.getMessage());
@@ -97,11 +93,16 @@ public class Main {
         System.out.println("Nb produits " + produitGestion.getNbProduits());
     }
 
+
+
+
+
+
     private static Integer lireNombre() {
         try {
             return Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-           // e.printStackTrace();
+            // e.printStackTrace();
             return -1;
         }
     }
@@ -113,3 +114,5 @@ public class Main {
         return input;
     }
 }
+
+

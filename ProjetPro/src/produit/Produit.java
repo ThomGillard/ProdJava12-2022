@@ -39,5 +39,3 @@ public abstract class Produit {
         this.estToxique = estToxique;
     }
 }
-
-//*iii

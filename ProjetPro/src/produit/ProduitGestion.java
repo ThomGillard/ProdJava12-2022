@@ -7,14 +7,11 @@ public class ProduitGestion {
 
 
     private final ArrayList<Produit> produits = new ArrayList();
-    private static final int MAX_TEMPERATURE_FRIGO = 8;
+    private static final double MAX_TEMPERATURE_FRIGO = 8;
 
 
-    // Produit normal   --> nom, prix, marque, toxique
-    // Produit refrigéré --> nom prix marque toxique, temperature
 
-
-    public void creerProduit(String nom, double prix, String marque, boolean estToxique, int temperature) throws CreerProduitException{
+    public void creerProduit(String nom, double prix, String marque, boolean estToxique, double temperature) throws CreerProduitException{
 
         // Nom non vide:
         if (nom == null || nom.length() == 0 ){
