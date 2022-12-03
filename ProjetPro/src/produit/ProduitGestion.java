@@ -17,13 +17,14 @@ public class ProduitGestion {
     public void creerProduit(String nom, double prix, String marque, boolean estToxique, int temperature) throws CreerProduitException{
 
         // Nom non vide:
-            try {
-                return Integer.parseInt(sc.nextLine());
-            }catch (NumberFormatException e){
-                return -1;
-            }
+        if (nom == null || nom.length() == 0 ){
+           throw  new CreerProduitException("Le nom ne peut être vide");
         }
         // Prix positif
+        if (prix <=0){
+            throw new CreerProduitException("le prix ne peut être nul ou négatif");
+        }
+
         // Marque non vide
         // temperature entre ...
 
