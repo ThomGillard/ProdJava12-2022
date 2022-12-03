@@ -88,7 +88,7 @@ public class Main {
             return;
         }
         try {
-            produitGestion.creerProduit(nomProduit, prix, marque, toxique, temperature);
+            produitGestion.creerProduit(nomProduit,prix, marque, toxique, temperature);
         } catch (CreerProduitException e) {
             System.out.println("Erreur dans l'encodage. Le message d'erreur est le suivant:");
             System.out.println(e.getMessage());

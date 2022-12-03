@@ -24,9 +24,14 @@ public class ProduitGestion {
         if (prix <=0){
             throw new CreerProduitException("le prix ne peut être nul ou négatif");
         }
-
         // Marque non vide
+        if (marque == null || marque.length() == 0){
+            throw new CreerProduitException("La marque ne peut être vide");
+        }
         // temperature entre ...
+        if (temperature <=0 || temperature >= 30){
+            throw new CreerProduitException("La température doit être comprise entre 0° et 30°");
+        }
 
 
         Produit nouveauProduit;
