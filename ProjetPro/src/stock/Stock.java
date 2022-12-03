@@ -13,6 +13,7 @@ public class Stock {
         this.adresse = adresse;
         this.tailleMax = tailleMax;
     }
+    //quantité physique total de produit (1 produit mais 200pcs)
     public int getTailleMax() {
         return tailleMax;
     }
