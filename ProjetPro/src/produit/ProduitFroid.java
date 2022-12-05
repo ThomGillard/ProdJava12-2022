@@ -3,7 +3,7 @@ package produit;
 public class ProduitFroid extends Produit {
 
 
-    double temperature = 0;
+    private double temperature = 0;
 
     //Contructeur:
 

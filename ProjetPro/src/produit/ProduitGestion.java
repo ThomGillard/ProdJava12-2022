@@ -26,7 +26,7 @@ public class ProduitGestion {
             throw new CreerProduitException("La marque ne peut être vide");
         }
         // temperature entre ...
-        if (temperature <=0 || temperature >= 30){
+        if (temperature <0 || temperature > 30){
             throw new CreerProduitException("La température doit être comprise entre 0° et 30°");
         }
 
@@ -39,8 +39,20 @@ public class ProduitGestion {
         }
         this.produits.add(nouveauProduit);
     }
+    public int rechercheIndiceProduit(String nom){
+        int i=0;
+        while (i<produits.size() && !nom.equals(produits.get(i).getNom())){
+            i++;
+        }
+        return i;
+    }
+
 
     public int getNbProduits() {
         return produits.size();
+    }
+
+    public ArrayList<Produit> getProduits() {
+        return produits;
     }
 }
