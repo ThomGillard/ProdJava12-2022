@@ -22,16 +22,6 @@ public class StockProduit {
     public Produit getProduit() {
         return produit;
     }
-    /*public void supprimerProduit(String nomProduit, String nomStock)throws CreerProduitException {
-        if (nomProduit == null || nomProduit.length() == 0 ){
-            throw  new CreerProduitException("Le nom du produit ne peut être vide");
-        }
-        if (nomStock == null || nomStock.length() == 0 ){
-            throw  new CreerProduitException("Le nom du stock ne peut être vide");
-        }
-        int indiceStock = rechercheIndiceStock(nomStock);
-        stocks.get(indiceStock).
-
-    }*/
+    
 
 }
