@@ -41,8 +41,8 @@ public class Main {
                         break;
                     case 4 : modifierQuantite();
                         break;
-//            case 5 : suppProduit;
-//            break;
+                    case 5 : supprimerProduit();
+                        break;
                 }
             } else if (choixMenu==6){
                 System.out.println("Vous quittez le programme.");
@@ -166,8 +166,13 @@ public class Main {
         sc.nextLine();
 
 
+        try{
+            stockGestion.ajouterProduitAStock(produitGestion,nomProduit,nomStock,quantite);
+        }catch(CreerStockException e){
+            System.out.println("Erreur dans l'encodage. Le message d'erreur est le suivant:");
+            System.out.println(e.getMessage());
+        }
 
-        stockGestion.ajouterProduitAStock(produitGestion,nomProduit,nomStock,quantite);
 
         //Gérer pour pas que ça s'affiche quand plein
         //System.out.println("Ajout effectué avec succès");
@@ -184,12 +189,33 @@ public class Main {
         int quantite = sc.nextInt();
         sc.nextLine();
 
+        try{
+            stockGestion.modifierQuantite(nomProduit,quantite);
+            int qtt = stockGestion.getQuantite(nomProduit);
+            System.out.println("La quantité est de "+qtt+ " dans ce stock");
+        }catch(CreerStockException e ){
+            System.out.println("Erreur dans l'encodage. Le message d'erreur est le suivant:");
+            System.out.println(e.getMessage());
+        }
 
-        stockGestion.modifierQuantite(nomProduit,quantite);
-        int qtt = stockGestion.getQuantite(nomProduit);
-        System.out.println("La quantité est de "+qtt+ " dans ce stock");
+
     }
+    //CASE 5
+    private static void supprimerProduit(){
+        System.out.println("Nom du produit à supprimer : ");
+        String nomProduit = sc.next();
 
+        System.out.println("Nom du stock dans lequel supprimer :");
+        String nomStock = sc.next();
+        sc.nextLine();
+        try{
+            stockGestion.supprimerProduit(nomProduit,nomStock);
+        }catch (CreerStockException e ){
+            System.out.println("Erreur dans l'encodage. Le message d'erreur est le suivant:");
+            System.out.println(e.getMessage());
+        }
+
+    }
 
 
 
