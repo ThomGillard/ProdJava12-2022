@@ -98,19 +98,29 @@ public class StockGestion {
 
     }
     public void modifierQuantite(String nomProd,int nouvQuantite)throws CreerStockException{
+
         if (nomProd == null || nomProd.length()==0){
             throw new CreerStockException("Le nom ne peut être null");
         }
+
 
         int indiceStockProd = rechercheIndiceStockProduit(nomProd);
         stockProduits.get(indiceStockProd).modifierQuantite(nouvQuantite);
 
     }
-    /*public void supprimerProduit(ProduitGestion produitGestion,String nomProduit,String nomStock){
+    public void supprimerProduit(String nomProduit,String nomStock)throws CreerStockException{
+        if (nomProduit == null || nomProduit.length()==0){
+            throw new CreerStockException("Le nom du produit ne peut être null");
+        }
+        if (nomStock == null || nomStock.length()==0){
+            throw new CreerStockException("Le nom du stock ne peut être null");
+        }
+
         int indiceStock = rechercheIndiceStock(nomStock);
-        int indiceProd = produitGestion.rechercheIndiceProduit(nomProduit);
-        stockProduits
-    }*/
+        int indiceProd = rechercheIndiceStockProduit(nomProduit);
+        stockProduits.remove(indiceProd);
+        System.out.println(getNbStockProduits());
+    }
 
 
     public int getQuantiteTot(){
