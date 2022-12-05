@@ -109,8 +109,7 @@ public class Main {
         String adresse = sc.nextLine();
 
         System.out.println("Taille max du stock :");
-        int tailleMax = sc.nextInt();
-        sc.nextLine();
+        int tailleMax = lireNombre();
 
         System.out.println("Nom du stock :");
         String nomStock = sc.next();
@@ -120,8 +119,7 @@ public class Main {
         do {
 
             System.out.println("Taper 1 si le produit est toxique et 2 si non");
-            choixToxique=sc.nextInt();
-            sc.nextLine();
+            choixToxique=lireNombre();
 
         }while (choixToxique <1 || choixToxique >2);
 
@@ -131,8 +129,7 @@ public class Main {
         do {
 
             System.out.println("Taper 1 si le produit est frais et 2 si non");
-            choixFrais=sc.nextInt();
-            sc.nextLine();
+            choixFrais=lireNombre();
 
         }while (choixFrais <1 || choixFrais >2);
 
@@ -162,7 +159,7 @@ public class Main {
 
 
         System.out.println("Quantité du produit :");
-        int quantite = sc.nextInt();
+        int quantite = lireNombre();
         sc.nextLine();
 
 
@@ -186,8 +183,8 @@ public class Main {
         String nomProduit = sc.next();
 
         System.out.println("Quantité du produit :");
-        int quantite = sc.nextInt();
-        sc.nextLine();
+        int quantite = lireNombre();
+
 
         try{
             stockGestion.modifierQuantite(nomProduit,quantite);
@@ -228,6 +225,7 @@ public class Main {
             return -1;
         }
     }
+
     private static String lireString() throws Exception {
         String input = sc.nextLine();
         if (input == null || input.length() == 0) {
